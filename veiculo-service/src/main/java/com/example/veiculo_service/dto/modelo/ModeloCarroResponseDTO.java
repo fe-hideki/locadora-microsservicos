@@ -1,10 +1,13 @@
 package com.example.veiculo_service.dto.modelo;
 
-import com.example.veiculo_service.model.Categoria;
+import lombok.Getter;
+import lombok.Setter;
 
-public class ModeloCarroDTO {
+@Getter
+@Setter
+public class ModeloCarroResponseDTO {
     private Long id;
     private String descricao;
-    private Categoria categoria;
     private String fabricanteNome;
+    private String categoriaNome;
 }

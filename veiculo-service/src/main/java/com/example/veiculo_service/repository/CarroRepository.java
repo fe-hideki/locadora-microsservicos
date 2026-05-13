@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CarroRepository extends JpaRepository<Carro, Long> {
-    List<Carro> findByPlaca(String placa);
-    List<Carro> findByChassi(String chassi);
+    boolean existsByPlaca(String placa);
+    boolean existsByChassi(String chassi);
 }

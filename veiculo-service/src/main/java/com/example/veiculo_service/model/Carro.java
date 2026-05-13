@@ -20,12 +20,16 @@ public class Carro {
     private String cor;
     private BigDecimal valorDiaria;
 
+    @Enumerated(EnumType.STRING)
+    private StatusCarro status = StatusCarro.DISPONIVEL;
+
     @ManyToOne
     @JoinColumn(name = "modelo_id")
     private ModeloCarro modelo;
 
     @ManyToMany
     private List<Acessorio> acessorios;
+
 
     public void setModelo(@NotNull Long modeloId) {
     }

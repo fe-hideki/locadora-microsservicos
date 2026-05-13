@@ -4,6 +4,7 @@ import com.example.veiculo_service.dto.carro.CarroRequestDTO;
 import com.example.veiculo_service.dto.carro.CarroResponseDTO;
 import com.example.veiculo_service.mapper.CarroMapper;
 import com.example.veiculo_service.model.Carro;
+import com.example.veiculo_service.model.ModeloCarro;
 import com.example.veiculo_service.repository.AcessorioRepository;
 import com.example.veiculo_service.repository.CarroRepository;
 import com.example.veiculo_service.repository.ModeloRepository;
@@ -22,9 +23,16 @@ public class CarroService {
     private final ModeloRepository modeloRepository;
 
     public CarroResponseDTO cadastrar(CarroRequestDTO dto){
-        if (carroRepository.findByPlaca(dto.getPlaca()).isEmpty() && carroRepository.findByChassi(dto.getChassi()).isEmpty()){
-            throw new RuntimeException("Modelo não encontrado");
+        if (carroRepository.existsByPlaca(dto.getPlaca())) {
+            throw new RuntimeException("Placa já cadastrada");
         }
+
+        if (carroRepository.existsByChassi(dto.getChassi())) {
+            throw new RuntimeException("Chassi já cadastrado");
+        }
+
+        ModeloCarro modelo = modeloRepository.findById(dto.getModeloId())
+                .orElseThrow(() -> new RuntimeException("Modelo não encontrado"));
 
         Carro carro = CarroMapper.toEntity(dto);
         Carro carroSalvo = carroRepository.save(carro);

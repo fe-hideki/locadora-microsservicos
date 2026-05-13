@@ -1,7 +1,6 @@
 package com.example.veiculo_service.dto.carro;
 
 import com.example.veiculo_service.dto.acessorio.AcessorioDTO;
-import com.example.veiculo_service.dto.modelo.ModeloCarroDTO;
 import com.example.veiculo_service.model.ModeloCarro;
 import lombok.Getter;
 import lombok.Setter;

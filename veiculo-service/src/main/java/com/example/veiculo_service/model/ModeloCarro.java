@@ -1,8 +1,11 @@
 package com.example.veiculo_service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +23,8 @@ public class ModeloCarro {
     @ManyToOne
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
+
+    @OneToMany
+    @JsonIgnore
+    private List<Carro> carros;
 }
