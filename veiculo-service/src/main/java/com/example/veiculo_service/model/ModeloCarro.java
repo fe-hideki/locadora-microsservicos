@@ -1,8 +1,6 @@
 package com.example.veiculo_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,4 +13,11 @@ public class ModeloCarro {
     @GeneratedValue
     private Long id;
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "fabricante_id")
+    private Fabricante fabricante;
 }

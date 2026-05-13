@@ -1,13 +1,12 @@
 package com.example.veiculo_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,4 +20,13 @@ public class Carro {
     private String cor;
     private BigDecimal valorDiaria;
 
+    @ManyToOne
+    @JoinColumn(name = "modelo_id")
+    private ModeloCarro modelo;
+
+    @ManyToMany
+    private List<Acessorio> acessorios;
+
+    public void setModelo(@NotNull Long modeloId) {
+    }
 }
