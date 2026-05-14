@@ -19,77 +19,52 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CarroService {
-    private final AcessorioRepository acessorioRepository;
-    private final CarroRepository carroRepository;
-    private final ModeloRepository modeloRepository;
 
-    public CarroResponseDTO cadastrar(CarroRequestDTO dto){
+    private final CarroRepository carroRepository;
+    private final CarroMapper carroMapper;
+
+    public CarroResponseDTO cadastrar(CarroRequestDTO dto) {
         if (carroRepository.existsByPlaca(dto.getPlaca())) {
             throw new RuntimeException("Placa já cadastrada");
         }
-
         if (carroRepository.existsByChassi(dto.getChassi())) {
             throw new RuntimeException("Chassi já cadastrado");
         }
 
-        ModeloCarro modelo = modeloRepository.findById(dto.getModeloId())
-                .orElseThrow(() -> new RuntimeException("Modelo não encontrado"));
-
-        Carro carro = CarroMapper.toEntity(dto);
-        Carro carroSalvo = carroRepository.save(carro);
-
-        return CarroMapper.toResponseDTO(carroSalvo);
+        Carro carro = carroMapper.toEntity(dto);
+        return carroMapper.toResponseDTO(carroRepository.save(carro));
     }
 
-
     public List<CarroResponseDTO> listar() {
-        if (carroRepository.findAll().isEmpty()){
-            throw new RuntimeException("Nenhum carro encontrado");
-        }
-        List<Carro> carros = carroRepository.findAll();
-        return carros.stream()
-                .map(CarroMapper::toResponseDTO)
+        return carroRepository.findAll()
+                .stream()
+                .map(carroMapper::toResponseDTO)
                 .toList();
     }
 
-
-    public CarroResponseDTO buscarPorId(Long id){
-        Optional<Carro> carroOptional = carroRepository.findById(id);
-        if (carroOptional.isEmpty()){
-            throw new RuntimeException("Carro não encontrado");
-        }
-        Carro carro = carroOptional.get();
-        return CarroMapper.toResponseDTO(carro);
+    public CarroResponseDTO buscarPorId(Long id) {
+        Carro carro = carroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+        return carroMapper.toResponseDTO(carro);
     }
 
     public CarroResponseDTO reservar(Long id) {
-        Optional<Carro> carroOptional = carroRepository.findById(id);
-        if (carroOptional.isEmpty()){
-            throw new RuntimeException("Carro não encontrado");
-        }
-        Carro carro = carroOptional.get();
-        if (carro.getStatus().equals("RESERVADO")){
+        Carro carro = carroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+
+        if (carro.getStatus() == StatusCarro.RESERVADO) {
             throw new RuntimeException("Carro já reservado");
         }
-        carro.setStatus(StatusCarro.valueOf("RESERVADO"));
-        Carro carroSalvo = carroRepository.save(carro);
-        return CarroMapper.toResponseDTO(carroSalvo);
+
+        carro.setStatus(StatusCarro.RESERVADO);
+        return carroMapper.toResponseDTO(carroRepository.save(carro));
     }
 
     public List<CarroResponseDTO> buscarPorCategoria(String categoria) {
-        List<Carro> carros = carroRepository.findAll();
-        List<Carro> carrosFiltrados = carros.stream()
+        return carroRepository.findAll()
+                .stream()
                 .filter(carro -> carro.getModelo().getCategoria().name().equalsIgnoreCase(categoria))
-                .toList();
-
-        if (carrosFiltrados.isEmpty()) {
-            throw new RuntimeException("Nenhum carro encontrado para a categoria: " + categoria);
-        }
-
-        return carrosFiltrados.stream()
-                .map(CarroMapper::toResponseDTO)
+                .map(carroMapper::toResponseDTO)
                 .toList();
     }
-
-
 }

@@ -15,10 +15,6 @@ import java.util.List;
 @RequestMapping("/carros")
 @RequiredArgsConstructor
 public class CarroController {
-    //Get /carros
-    //Get /carros/{id}
-    //Get /carros?categoria
-    //Put /carros/{id}/reservar
 
     private final CarroService carroService;
 

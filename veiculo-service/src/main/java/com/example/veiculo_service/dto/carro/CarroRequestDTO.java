@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,7 +26,7 @@ public class CarroRequestDTO {
     private BigDecimal valorDiaria;
     @NotNull
     private Long modeloId;
-    @NotNull
-    private Long acessorioId;
+
+    private List<Long> acessorioIds = new ArrayList<>();
 
 }
