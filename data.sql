@@ -1,3 +1,4 @@
+
 CREATE DATABASE locadora;
 USE locadora;
 
@@ -83,10 +84,10 @@ CREATE TABLE apolice_seguro (
 
 CREATE TABLE carrinho (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                          cliente_id BIGINT,
+                          pessoa_id BIGINT,
                           criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-                          FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+                          FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
 );
 
 CREATE TABLE carrinho_item (
@@ -103,7 +104,7 @@ CREATE TABLE carrinho_item (
 
 CREATE TABLE aluguel (
                          id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                         cliente_id BIGINT,
+                         pessoa_id BIGINT,
                          carro_id BIGINT,
                          apolice_id BIGINT,
                          data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -112,7 +113,7 @@ CREATE TABLE aluguel (
                          valor_total DECIMAL(10,2),
                          status ENUM('CRIADO', 'CONFIRMADO', 'PAGO', 'CANCELADO'),
 
-                         FOREIGN KEY (cliente_id) REFERENCES cliente(id),
+                         FOREIGN KEY (pessoa_id) REFERENCES pessoa(id),
                          FOREIGN KEY (carro_id) REFERENCES carro(id),
                          FOREIGN KEY (apolice_id) REFERENCES apolice_seguro(id)
 );
