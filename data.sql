@@ -127,3 +127,11 @@ CREATE TABLE pagamento (
 
                            FOREIGN KEY (aluguel_id) REFERENCES aluguel(id)
 );
+
+CREATE TABLE usuario (
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+                         username VARCHAR(150) UNIQUE NOT NULL,
+                         password VARCHAR(255) NOT NULL,
+                         role VARCHAR(50)
+);

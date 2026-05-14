@@ -13,5 +13,7 @@
         <module>cliente-service</module>
         <module>locacao-service</module>
         <module>veiculo-service</module>
+        <module>api-gateway</module>
+        <module>usuario-service</module>
     </modules>
 </project>
