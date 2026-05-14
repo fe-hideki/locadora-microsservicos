@@ -36,6 +36,7 @@ public class GatewayController {
             case "cliente-service" -> "http://localhost:8080";
             case "locacao-service" -> "http://localhost:8081";
             case "veiculo-service" -> "http://localhost:8082";
+            case "usuario-service" -> "http://localhost:8083";
             default -> null;
         };
 
