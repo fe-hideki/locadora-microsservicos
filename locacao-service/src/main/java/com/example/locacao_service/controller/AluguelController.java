@@ -4,6 +4,7 @@ import com.example.locacao_service.dto.aluguel.AluguelRequestDto;
 import com.example.locacao_service.dto.aluguel.AluguelResponseDto;
 import com.example.locacao_service.mapper.AluguelMapper;
 import com.example.locacao_service.service.AluguelService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,9 @@ public class AluguelController {
     }
 
     @PostMapping
-    public ResponseEntity<AluguelResponseDto> cadastrarAluguel(@RequestBody AluguelRequestDto dto){
+    public ResponseEntity<AluguelResponseDto> cadastrarAluguel(@RequestBody
+                                                                   @Valid
+                                                                   AluguelRequestDto dto){
         return ResponseEntity.status(201)
                 .body(AluguelMapper.toResponse(aluguelService.save(dto)));
     }
