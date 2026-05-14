@@ -26,7 +26,7 @@ public class CarroMapper {
         carro.setChassi(dto.getChassi());
         carro.setCor(dto.getCor());
         carro.setValorDiaria(dto.getValorDiaria());
-        carro.setModelo(modelo.getId());
+        carro.setModelo(modelo);
         carro.setStatus(StatusCarro.DISPONIVEL);
         carro.setAcessorios(acessorioRepository.findAllById(dto.getAcessorioIds()));
 

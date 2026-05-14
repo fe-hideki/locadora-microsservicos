@@ -20,6 +20,9 @@ public class ModeloCarroService {
     private final ModeloCarroMapper modeloCarroMapper;
 
     public ModeloCarroResponseDTO cadastrar(ModeloCarroRequestDTO dto) {
+        if (modeloRepository.existsByDescricaoIgnoreCase(dto.getDescricao())) {
+            throw new RuntimeException("Modelo já cadastrado");
+        }
         ModeloCarro modelo = modeloCarroMapper.toEntity(dto);
         return modeloCarroMapper.toDTO(modeloRepository.save(modelo));
     }
