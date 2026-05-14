@@ -13,6 +13,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @RestController
+@RequestMapping("/apolice")
 public class ApoliceSeguroController {
 
     @Autowired

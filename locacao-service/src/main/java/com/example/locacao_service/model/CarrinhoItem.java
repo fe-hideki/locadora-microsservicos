@@ -18,7 +18,7 @@ public class CarrinhoItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Carrinho carrinho;
 
     private BigInteger carroId;

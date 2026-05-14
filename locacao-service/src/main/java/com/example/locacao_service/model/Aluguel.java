@@ -22,7 +22,7 @@ public class Aluguel {
 
     private BigInteger carroId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private ApoliceSeguro apoliceSeguro;
 
     private LocalDateTime dataPedido;
