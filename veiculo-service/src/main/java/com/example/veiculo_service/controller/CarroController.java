@@ -40,4 +40,15 @@ public class CarroController {
         return ResponseEntity.ok(carro);
     }
 
+    @PutMapping("/{id}/reservar")
+    public ResponseEntity<CarroResponseDTO> reservarCarro(@PathVariable Long id) {
+        CarroResponseDTO carroReservado = carroService.reservar(id);
+        return ResponseEntity.ok(carroReservado);
+    }
+
+     @GetMapping("/categoria")
+    public ResponseEntity<List<CarroResponseDTO>> buscarPorCategoria(@RequestParam String categoria) {
+         List<CarroResponseDTO> carros = carroService.buscarPorCategoria(categoria);
+         return ResponseEntity.ok(carros);
+     }
 }

@@ -5,6 +5,7 @@ import com.example.veiculo_service.dto.carro.CarroResponseDTO;
 import com.example.veiculo_service.mapper.CarroMapper;
 import com.example.veiculo_service.model.Carro;
 import com.example.veiculo_service.model.ModeloCarro;
+import com.example.veiculo_service.model.StatusCarro;
 import com.example.veiculo_service.repository.AcessorioRepository;
 import com.example.veiculo_service.repository.CarroRepository;
 import com.example.veiculo_service.repository.ModeloRepository;
@@ -59,6 +60,35 @@ public class CarroService {
         }
         Carro carro = carroOptional.get();
         return CarroMapper.toResponseDTO(carro);
+    }
+
+    public CarroResponseDTO reservar(Long id) {
+        Optional<Carro> carroOptional = carroRepository.findById(id);
+        if (carroOptional.isEmpty()){
+            throw new RuntimeException("Carro não encontrado");
+        }
+        Carro carro = carroOptional.get();
+        if (carro.getStatus().equals("RESERVADO")){
+            throw new RuntimeException("Carro já reservado");
+        }
+        carro.setStatus(StatusCarro.valueOf("RESERVADO"));
+        Carro carroSalvo = carroRepository.save(carro);
+        return CarroMapper.toResponseDTO(carroSalvo);
+    }
+
+    public List<CarroResponseDTO> buscarPorCategoria(String categoria) {
+        List<Carro> carros = carroRepository.findAll();
+        List<Carro> carrosFiltrados = carros.stream()
+                .filter(carro -> carro.getModelo().getCategoria().name().equalsIgnoreCase(categoria))
+                .toList();
+
+        if (carrosFiltrados.isEmpty()) {
+            throw new RuntimeException("Nenhum carro encontrado para a categoria: " + categoria);
+        }
+
+        return carrosFiltrados.stream()
+                .map(CarroMapper::toResponseDTO)
+                .toList();
     }
 
 
