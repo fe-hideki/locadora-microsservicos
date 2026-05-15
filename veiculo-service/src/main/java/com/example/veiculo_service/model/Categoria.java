@@ -1,5 +1,8 @@
 package com.example.veiculo_service.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public enum Categoria {
     HATCH_COMPACTO,
     HATCH_MEDIO,
@@ -8,5 +11,6 @@ public enum Categoria {
     SEDAN_GRANDE,
     MINIVAN,
     ESPORTIVO,
-    UTILITARIO_COMERCIAL
+    UTILITARIO_COMERCIAL;
+
 }

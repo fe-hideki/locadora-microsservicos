@@ -18,6 +18,11 @@ public class GatewayController {
         this.webClient = WebClient.builder().build();
     }
 
+    @GetMapping("/teste")
+    public Mono<String> teste() {
+        return Mono.just("Gateway funcionando!");
+    }
+
     @RequestMapping("/{service}/{path:^(?!api).*$}/**")
     public Mono<ResponseEntity<String>> proxy(
             @PathVariable String service,
@@ -28,15 +33,19 @@ public class GatewayController {
             ServerHttpRequest request) {
 
         String baseUrl = switch (service) {
-            case "clientes" -> "http://localhost:8080";
-            case "locacoes" -> "http://localhost:8081";
-            case "veiculos" -> "http://localhost:8082";
+            case "cliente-service" -> "http://localhost:8080";
+            case "locacao-service" -> "http://localhost:8081";
+            case "veiculo-service" -> "http://localhost:8082";
+            case "usuario-service" -> "http://localhost:8083";
             default -> null;
         };
 
         if (baseUrl == null) return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Serviço não encontrado"));
 
         String fullPath = request.getURI().getRawPath().replace("/api/" + service, "");
+
+        System.out.println("FULL PATH: " + fullPath);
+        System.out.println("BASE URL: " + baseUrl);
 
         return webClient.method(request.getMethod())
                 .uri(baseUrl + fullPath)
