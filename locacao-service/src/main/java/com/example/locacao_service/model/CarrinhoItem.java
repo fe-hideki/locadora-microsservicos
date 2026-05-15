@@ -6,22 +6,26 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "apolice_seguro")
+@Table(name = "carrinho_item")
 @Getter
 @Setter
-public class ApoliceSeguro {
+public class CarrinhoItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    private BigDecimal valorFranquia;
+    @ManyToOne
+    private Carrinho carrinho;
 
-    private Boolean protecaoTerceiro;
+    private BigInteger carroId;
 
-    private Boolean protecaoCausasNaturais;
+    private LocalDate dataInicio;
 
-    private Boolean protecaoRoubo;
+    private LocalDate dataFim;
+
+    private BigDecimal valorEstimado;
 }

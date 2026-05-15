@@ -93,10 +93,11 @@ CREATE TABLE aluguel (
                          carro_id BIGINT,
                          apolice_id BIGINT,
                          data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                         data_entrega TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                         data_devolucao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                         data_entrega TIMESTAMP,
+                         data_devolucao TIMESTAMP,
                          valor_total DECIMAL(10,2),
-                         status ENUM('CRIADO', 'CONFIRMADO', 'PAGO', 'CANCELADO'),
+                         status ENUM('CRIADO', 'PAGO', 'CANCELADO'),
+
                          FOREIGN KEY (pessoa_id) REFERENCES pessoa(id),
                          FOREIGN KEY (carro_id) REFERENCES carro(id),
                          FOREIGN KEY (apolice_id) REFERENCES apolice_seguro(id)

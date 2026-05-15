@@ -4,24 +4,20 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "apolice_seguro")
+@Table(name = "carrinho")
 @Getter
 @Setter
-public class ApoliceSeguro {
+public class Carrinho {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    private BigDecimal valorFranquia;
+    private BigInteger pessoaId;
 
-    private Boolean protecaoTerceiro;
-
-    private Boolean protecaoCausasNaturais;
-
-    private Boolean protecaoRoubo;
+    private LocalDateTime criadoEm;
 }

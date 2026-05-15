@@ -1,20 +1,15 @@
-package com.example.locacao_service.model;
+package com.example.locacao_service.dto.apolice;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-@Entity
-@Table(name = "apolice_seguro")
 @Getter
 @Setter
-public class ApoliceSeguro {
+public class ApoliceSeguroResponseDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
     private BigDecimal valorFranquia;

@@ -8,20 +8,21 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "apolice_seguro")
+@Table(name = "pagamento")
 @Getter
 @Setter
-public class ApoliceSeguro {
+public class Pagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    private BigDecimal valorFranquia;
+    @ManyToOne
+    private Aluguel aluguel;
 
-    private Boolean protecaoTerceiro;
+    private String metodo;
 
-    private Boolean protecaoCausasNaturais;
+    private String status;
 
-    private Boolean protecaoRoubo;
+    private BigDecimal valor;
 }
