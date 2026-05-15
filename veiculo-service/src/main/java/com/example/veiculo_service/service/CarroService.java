@@ -60,6 +60,17 @@ public class CarroService {
         return carroMapper.toResponseDTO(carroRepository.save(carro));
     }
 
+    public CarroResponseDTO devolver(Long id) {
+        Carro carro = carroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+
+        if (carro.getStatus() == StatusCarro.DISPONIVEL) {
+            throw new IllegalArgumentException("Carro já disponível");
+        }
+        carro.setStatus(StatusCarro.DISPONIVEL);
+        return carroMapper.toResponseDTO(carroRepository.save(carro));
+    }
+
     public List<CarroResponseDTO> buscarPorCategoria(String categoria) {
         return carroRepository.findAll()
                 .stream()
