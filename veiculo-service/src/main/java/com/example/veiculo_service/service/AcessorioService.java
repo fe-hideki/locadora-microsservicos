@@ -21,7 +21,7 @@ public class AcessorioService {
 
     public AcessorioResponseDTO cadastrar (AcessorioRequestDTO dto){
         if (acessorioRepository.existsByDescricaoIgnoreCase(dto.getDescricao())) {
-            throw new RuntimeException("Acessório já cadastrado");
+            throw new IllegalArgumentException("Acessório já cadastrado");
         }
 
         Acessorio acessorio = acessorioMapper.toEntity(dto);

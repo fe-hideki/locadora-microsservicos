@@ -16,7 +16,7 @@ public class FabricanteService {
 
     public FabricanteResponseDTO cadastrar (FabricanteRequestDTO dto){
         if (fabricanteRepository.existsByNomeIgnoreCase(dto.getNome())) {
-            throw new RuntimeException("Fabricante já cadastrado");
+            throw new IllegalArgumentException("Fabricante já cadastrado");
         }
 
         Fabricante fabricante = new Fabricante();

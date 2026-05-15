@@ -25,10 +25,10 @@ public class CarroService {
 
     public CarroResponseDTO cadastrar(CarroRequestDTO dto) {
         if (carroRepository.existsByPlaca(dto.getPlaca())) {
-            throw new RuntimeException("Placa já cadastrada");
+            throw new IllegalArgumentException("Placa já cadastrada");
         }
         if (carroRepository.existsByChassi(dto.getChassi())) {
-            throw new RuntimeException("Chassi já cadastrado");
+            throw new IllegalArgumentException("Chassi já cadastrado");
         }
 
         Carro carro = carroMapper.toEntity(dto);
@@ -53,7 +53,7 @@ public class CarroService {
                 .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
 
         if (carro.getStatus() == StatusCarro.RESERVADO) {
-            throw new RuntimeException("Carro já reservado");
+            throw new IllegalArgumentException("Carro já reservado");
         }
 
         carro.setStatus(StatusCarro.RESERVADO);

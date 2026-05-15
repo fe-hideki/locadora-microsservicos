@@ -26,7 +26,7 @@ public class Carro {
     @Enumerated(EnumType.STRING)
     private StatusCarro status = StatusCarro.DISPONIVEL;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "modelo_id")
     private ModeloCarro modelo;
 

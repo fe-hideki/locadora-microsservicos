@@ -13,14 +13,14 @@ import java.util.List;
 public class ModeloCarro {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
 
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
 
