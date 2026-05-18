@@ -32,7 +32,7 @@ public class ApoliceSeguroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApoliceSeguroResponseDto> getById(@PathVariable BigInteger id){
+    public ResponseEntity<ApoliceSeguroResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.status(200)
                 .body(ApoliceMapper.toResponse(apoliceSeguroService.findById(id)));
     }

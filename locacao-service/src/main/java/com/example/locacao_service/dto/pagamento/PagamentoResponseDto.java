@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @Setter
 public class PagamentoResponseDto {
 
-    private BigInteger id;
+    private Long id;
 
     private String metodo;
 
     private String status;
 
-    private BigDecimal valor;
+    private Double valor;
 
     private Aluguel aluguel;
 
@@ -26,11 +26,11 @@ public class PagamentoResponseDto {
     @Setter
     public class Aluguel{
 
-        private BigInteger id;
+        private Long id;
 
-        private BigInteger pessoaId;
+        private Long pessoaId;
 
-        private BigInteger carroId;
+        private Long carroId;
 
         private LocalDateTime dataPedido;
 
@@ -38,7 +38,7 @@ public class PagamentoResponseDto {
 
         private LocalDateTime dataDevolucao;
 
-        private BigDecimal valorTotal;
+        private Double valorTotal;
 
         private Status status;
 
@@ -47,9 +47,9 @@ public class PagamentoResponseDto {
         @Getter
         @Setter
         public class ApoliceSeguro{
-            private BigInteger id;
+            private Long id;
 
-            private BigDecimal valorFranquia;
+            private Double valorFranquia;
 
             private Boolean protecaoTerceiro;
 

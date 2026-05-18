@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface AluguelRepository extends JpaRepository<Aluguel, BigInteger> {
+public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
 }

@@ -12,24 +12,24 @@ import java.time.LocalDateTime;
 @Setter
 public class CarrinhoItemResponseDto {
 
-    private BigInteger id;
+    private Long id;
 
-    private BigInteger carroId;
+    private Long carroId;
 
     private LocalDate dataInicio;
 
     private LocalDate dataFim;
 
-    private BigDecimal valorEstimado;
+    private Double valorEstimado;
 
     private Carrinho carrinho;
 
     @Getter
     @Setter
     public class Carrinho{
-        private BigInteger id;
+        private Long id;
 
-        private BigInteger pessoaId;
+        private Long pessoaId;
 
         private LocalDateTime criadoEm;
     }

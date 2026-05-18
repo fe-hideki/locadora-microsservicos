@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @Setter
 public class AluguelResponseDto {
 
-    private BigInteger id;
+    private Long id;
 
-    private BigInteger pessoaId;
+    private Long pessoaId;
 
-    private BigInteger carroId;
+    private Long carroId;
 
     private LocalDateTime dataPedido;
 
@@ -24,7 +24,7 @@ public class AluguelResponseDto {
 
     private LocalDateTime dataDevolucao;
 
-    private BigDecimal valorTotal;
+    private Double valorTotal;
 
     private Status status;
 
@@ -33,9 +33,9 @@ public class AluguelResponseDto {
     @Getter
     @Setter
     public class ApoliceSeguro {
-        private BigInteger id;
+        private Long id;
 
-        private BigDecimal valorFranquia;
+        private Double valorFranquia;
 
         private Boolean protecaoTerceiro;
 

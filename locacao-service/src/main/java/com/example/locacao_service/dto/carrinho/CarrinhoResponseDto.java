@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Setter
 public class CarrinhoResponseDto {
 
-    private BigInteger id;
+    private Long id;
 
-    private BigInteger pessoaId;
+    private Long pessoaId;
 
     private LocalDateTime criadoEm;
 }

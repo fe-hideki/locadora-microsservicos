@@ -31,7 +31,7 @@ public class PagamentoService {
         return pagamentoRepository.findAll();
     }
 
-    public Pagamento findById(BigInteger id){
+    public Pagamento findById(Long id){
         Optional<Pagamento> pagamento = pagamentoRepository.findById(id);
 
         if (pagamento.isEmpty()){

@@ -10,9 +10,9 @@ import java.math.BigInteger;
 @Setter
 public class ApoliceSeguroResponseDto {
 
-    private BigInteger id;
+    private Long id;
 
-    private BigDecimal valorFranquia;
+    private Double valorFranquia;
 
     private Boolean protecaoTerceiro;
 

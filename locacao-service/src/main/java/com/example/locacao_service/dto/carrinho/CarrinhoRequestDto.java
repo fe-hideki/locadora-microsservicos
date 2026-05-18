@@ -13,5 +13,5 @@ import java.time.LocalDateTime;
 public class CarrinhoRequestDto {
 
     @Positive
-    private BigInteger pessoaId;
+    private Long pessoaId;
 }

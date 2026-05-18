@@ -11,11 +11,11 @@ import java.math.BigInteger;
 public class AluguelRequestDto {
 
     @Positive
-    private BigInteger pessoaId;
+    private Long pessoaId;
 
     @Positive
-    private BigInteger carroId;
+    private Long carroId;
 
     @Positive
-    private BigInteger apoliceId;
+    private Long apoliceId;
 }

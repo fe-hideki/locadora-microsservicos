@@ -12,11 +12,11 @@ import java.math.BigInteger;
 public class CarrinhoItemRequestDto {
 
     @Positive
-    private BigDecimal valorEstimado;
+    private Double valorEstimado;
 
     @Positive
-    private BigInteger carrinhoId;
+    private Long carrinhoId;
 
     @Positive
-    private BigInteger carroId;
+    private Long carroId;
 }
