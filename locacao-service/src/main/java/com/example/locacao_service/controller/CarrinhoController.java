@@ -32,7 +32,7 @@ public class CarrinhoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarrinhoResponseDto> getCarrinhoById(@PathVariable BigInteger id){
+    public ResponseEntity<CarrinhoResponseDto> getCarrinhoById(@PathVariable Long id){
         return ResponseEntity.ok()
                 .body(CarrinhoMapper.toResponse(carrinhoService.getCarrinhosPorId(id)));
     }

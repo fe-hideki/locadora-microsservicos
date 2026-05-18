@@ -33,7 +33,7 @@ public class CarrinhoItemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarrinhoItemResponseDto> listarPorId(@PathVariable BigInteger id){
+    public ResponseEntity<CarrinhoItemResponseDto> listarPorId(@PathVariable Long id){
         return ResponseEntity.ok()
                 .body(CarrinhoItemMapper.toResponse(carrinhoItemService.findById(id)));
     }
@@ -46,7 +46,7 @@ public class CarrinhoItemController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CarrinhoItemResponseDto> finalizar(@PathVariable BigInteger id){
+    public ResponseEntity<CarrinhoItemResponseDto> finalizar(@PathVariable Long id){
         return ResponseEntity.ok().body(CarrinhoItemMapper.toResponse(carrinhoItemService.finalizar(id)));
     }
 }

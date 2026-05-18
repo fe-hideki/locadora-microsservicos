@@ -13,7 +13,7 @@ import java.math.BigInteger;
 public class PagamentoRequestDto {
 
     @Positive
-    private BigInteger aluguelId;
+    private Long aluguelId;
 
     @NotBlank
     private String metodo;
@@ -22,5 +22,5 @@ public class PagamentoRequestDto {
     private String status;
 
     @Positive
-    private BigDecimal valor;
+    private Double valor;
 }

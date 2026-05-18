@@ -32,7 +32,7 @@ public class AluguelController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AluguelResponseDto> getAluguelById(@PathVariable BigInteger id){
+    public ResponseEntity<AluguelResponseDto> getAluguelById(@PathVariable Long id){
         return ResponseEntity.status(200)
                 .body(AluguelMapper.toResponse(aluguelService.findById(id)));
     }
@@ -46,19 +46,19 @@ public class AluguelController {
     }
 
     @PutMapping("/{id}/pago")
-    public ResponseEntity<AluguelResponseDto> pagamento(@PathVariable BigInteger id){
+    public ResponseEntity<AluguelResponseDto> pagamento(@PathVariable Long id){
         return ResponseEntity.status(200)
                 .body(AluguelMapper.toResponse(aluguelService.pagar(id)));
     }
 
     @PutMapping("/{id}/entregue")
-    public ResponseEntity<AluguelResponseDto> entregue(@PathVariable BigInteger id){
+    public ResponseEntity<AluguelResponseDto> entregue(@PathVariable Long id){
         return ResponseEntity.status(200)
                 .body(AluguelMapper.toResponse(aluguelService.entregar(id)));
     }
 
     @PutMapping("/{id}/devolvido")
-    public ResponseEntity<AluguelResponseDto> devolvido(@PathVariable BigInteger id){
+    public ResponseEntity<AluguelResponseDto> devolvido(@PathVariable Long id){
         return ResponseEntity.status(200)
                 .body(AluguelMapper.toResponse(aluguelService.devolver(id)));
     }

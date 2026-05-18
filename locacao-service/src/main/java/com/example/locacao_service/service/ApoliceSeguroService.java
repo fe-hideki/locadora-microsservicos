@@ -22,7 +22,7 @@ public class ApoliceSeguroService {
         return apoliceSeguroRepository.findAll();
     }
 
-    public ApoliceSeguro findById(BigInteger id){
+    public ApoliceSeguro findById(Long id){
         Optional<ApoliceSeguro> optional = apoliceSeguroRepository.findById(id);
 
         if (optional.isEmpty()){

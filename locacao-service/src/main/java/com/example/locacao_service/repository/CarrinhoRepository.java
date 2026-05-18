@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface CarrinhoRepository extends JpaRepository<Carrinho, BigInteger> {
+public interface CarrinhoRepository extends JpaRepository<Carrinho, Long> {
 }

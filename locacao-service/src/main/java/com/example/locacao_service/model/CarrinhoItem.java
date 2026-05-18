@@ -16,16 +16,16 @@ public class CarrinhoItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
 
     @ManyToOne
     private Carrinho carrinho;
 
-    private BigInteger carroId;
+    private Long carroId;
 
     private LocalDate dataInicio;
 
     private LocalDate dataFim;
 
-    private BigDecimal valorEstimado;
+    private Double valorEstimado;
 }

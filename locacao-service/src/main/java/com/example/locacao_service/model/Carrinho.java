@@ -15,9 +15,9 @@ public class Carrinho {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
 
-    private BigInteger pessoaId;
+    private Long pessoaId;
 
     private LocalDateTime criadoEm;
 }

@@ -30,7 +30,7 @@ public class AluguelService {
         return aluguelRepository.findAll();
     }
 
-    public Aluguel findById(BigInteger id) {
+    public Aluguel findById(Long id) {
         Optional<Aluguel> aluguelOptional = aluguelRepository.findById(id);
 
         if (aluguelOptional.isEmpty()) {
@@ -60,7 +60,7 @@ public class AluguelService {
         return aluguelRepository.save(aluguel);
     }
 
-    public Aluguel pagar(BigInteger id) {
+    public Aluguel pagar(Long id) {
 
         Optional<Aluguel> aluguelOptional = aluguelRepository.findById(id);
 
@@ -75,7 +75,7 @@ public class AluguelService {
         return aluguelRepository.save(aluguel);
     }
 
-    public Aluguel entregar(BigInteger id) {
+    public Aluguel entregar(Long id) {
 
         Optional<Aluguel> aluguelOptional = aluguelRepository.findById(id);
 
@@ -90,7 +90,7 @@ public class AluguelService {
         return aluguelRepository.save(aluguel);
     }
 
-    public Aluguel devolver(BigInteger id) {
+    public Aluguel devolver(Long id) {
 
         Optional<Aluguel> aluguelOptional = aluguelRepository.findById(id);
 

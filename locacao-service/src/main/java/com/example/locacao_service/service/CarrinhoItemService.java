@@ -29,7 +29,7 @@ public class CarrinhoItemService {
         return carrinhoItemRepository.findAll();
     }
 
-    public CarrinhoItem findById(BigInteger id){
+    public CarrinhoItem findById(Long id){
         Optional<CarrinhoItem> carrinhoItem = carrinhoItemRepository.findById(id);
 
         if (carrinhoItem.isEmpty()){
@@ -56,7 +56,7 @@ public class CarrinhoItemService {
         return carrinhoItemRepository.save(carrinhoItem);
     }
 
-    public CarrinhoItem finalizar(BigInteger id){
+    public CarrinhoItem finalizar(Long id){
         Optional<CarrinhoItem> carrinhoItemOptional = carrinhoItemRepository.findById(id);
 
         if (carrinhoItemOptional.isEmpty()){

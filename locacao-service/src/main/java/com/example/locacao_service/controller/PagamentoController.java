@@ -33,7 +33,7 @@ public class PagamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PagamentoResponseDto> findById(@PathVariable BigInteger id){
+    public ResponseEntity<PagamentoResponseDto> findById(@PathVariable Long id){
         return ResponseEntity.ok(PagamentoMapper.toResponse(pagamentoService.findById(id)));
     }
 

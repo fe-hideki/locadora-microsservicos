@@ -23,7 +23,7 @@ public class CarrinhoService {
         return carrinhoRepository.findAll();
     }
 
-    public Carrinho getCarrinhosPorId(BigInteger id){
+    public Carrinho getCarrinhosPorId(Long id){
         Optional<Carrinho> carrinho = carrinhoRepository.findById(id);
 
         if(carrinho.isEmpty()){

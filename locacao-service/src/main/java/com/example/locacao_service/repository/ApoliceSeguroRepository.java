@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface ApoliceSeguroRepository extends JpaRepository<ApoliceSeguro, BigInteger> {
+public interface ApoliceSeguroRepository extends JpaRepository<ApoliceSeguro, Long> {
 }

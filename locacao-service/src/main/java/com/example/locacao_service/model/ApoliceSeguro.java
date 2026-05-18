@@ -15,9 +15,9 @@ public class ApoliceSeguro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
 
-    private BigDecimal valorFranquia;
+    private Double valorFranquia;
 
     private Boolean protecaoTerceiro;
 

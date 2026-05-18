@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface PagamentoRepository extends JpaRepository<Pagamento, BigInteger> {
+public interface PagamentoRepository extends JpaRepository<Pagamento, Long> {
 }

@@ -16,11 +16,11 @@ public class Aluguel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
 
-    private BigInteger pessoaId;
+    private Long pessoaId;
 
-    private BigInteger carroId;
+    private Long carroId;
 
     @ManyToOne
     private ApoliceSeguro apoliceSeguro;
@@ -31,7 +31,7 @@ public class Aluguel {
 
     private LocalDateTime dataDevolucao;
 
-    private BigDecimal valorTotal;
+    private Double valorTotal;
 
     private Status status;
 }

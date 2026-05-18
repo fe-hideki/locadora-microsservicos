@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class ApoliceSeguroRequestDto {
 
     @Positive
-    private BigDecimal valorFranquia;
+    private Double valorFranquia;
 
     private Boolean protecaoTerceiro;
 

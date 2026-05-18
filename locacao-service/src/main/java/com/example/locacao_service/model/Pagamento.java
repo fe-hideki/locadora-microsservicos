@@ -15,7 +15,7 @@ public class Pagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
 
     @ManyToOne
     private Aluguel aluguel;
@@ -24,5 +24,5 @@ public class Pagamento {
 
     private String status;
 
-    private BigDecimal valor;
+    private Double valor;
 }
