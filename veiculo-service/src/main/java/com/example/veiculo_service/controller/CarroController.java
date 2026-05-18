@@ -48,6 +48,12 @@ public class CarroController {
         return ResponseEntity.ok(carroDevolvido);
     }
 
+    @PutMapping("/{id}/alugar")
+    public ResponseEntity<CarroResponseDTO> alugarCarro(@PathVariable Long id) {
+        CarroResponseDTO carroAlugado = carroService.alugar(id);
+        return ResponseEntity.ok(carroAlugado);
+    }
+
      @GetMapping("/categoria")
     public ResponseEntity<List<CarroResponseDTO>> buscarPorCategoria(@RequestParam String categoria) {
          List<CarroResponseDTO> carros = carroService.buscarPorCategoria(categoria);

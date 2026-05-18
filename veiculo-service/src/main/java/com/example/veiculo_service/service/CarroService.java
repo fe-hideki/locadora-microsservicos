@@ -67,7 +67,27 @@ public class CarroService {
         if (carro.getStatus() == StatusCarro.DISPONIVEL) {
             throw new IllegalArgumentException("Carro já disponível");
         }
-        carro.setStatus(StatusCarro.DISPONIVEL);
+
+        if (carro.getStatus() == StatusCarro.ALUGADO || carro.getStatus() == StatusCarro.RESERVADO) {
+            carro.setStatus(StatusCarro.DISPONIVEL);
+        }
+        return carroMapper.toResponseDTO(carroRepository.save(carro));
+    }
+
+    public CarroResponseDTO alugar(Long id) {
+        Carro carro = carroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+
+        if  (carro.getStatus() == StatusCarro.DISPONIVEL) {
+            throw new IllegalArgumentException("Carro precisa ser reservado antes de alugar");
+        }
+
+        if (carro.getStatus() == StatusCarro.ALUGADO) {
+            throw new IllegalArgumentException("Carro já alugado");
+        }
+        if (carro.getStatus() == StatusCarro.RESERVADO) {
+            carro.setStatus(StatusCarro.ALUGADO);
+        }
         return carroMapper.toResponseDTO(carroRepository.save(carro));
     }
 
