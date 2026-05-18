@@ -56,7 +56,13 @@ public class CarroService {
             throw new IllegalArgumentException("Carro já reservado");
         }
 
-        carro.setStatus(StatusCarro.RESERVADO);
+        if (carro.getStatus() == StatusCarro.ALUGADO) {
+            throw new IllegalArgumentException("Carro já alugado");
+        }
+
+        if (carro.getStatus() == StatusCarro.DISPONIVEL) {
+            carro.setStatus(StatusCarro.RESERVADO);
+        }
         return carroMapper.toResponseDTO(carroRepository.save(carro));
     }
 
